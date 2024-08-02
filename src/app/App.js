@@ -27,6 +27,7 @@ const App = () => {
       setResponse(res.data);
       setError(null);
     } catch (err) {
+      console.error('Error details:', err); // Log the error for more details
       setError('Invalid JSON format or API error');
       setResponse(null);
     }
@@ -38,7 +39,7 @@ const App = () => {
 
   return (
     <div style={{ padding: '20px' }}>
-      <h1>API Input</h1>
+      <h1>Your Roll Number</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <textarea
@@ -47,7 +48,7 @@ const App = () => {
             placeholder='Enter JSON here'
             rows="4"
             cols="50"
-            style={{ width: '100%', color: 'black' }}
+            style={{ width: '100%', color: 'black' }} // Ensure full width and text color black
           />
         </div>
         <button type='submit' style={{ marginTop: '10px' }}>Submit</button>
@@ -67,17 +68,17 @@ const App = () => {
             <h2>Filtered Response</h2>
             {selectedOptions.some(option => option.value === 'characters') && (
               <div>
-                <strong>Characters:</strong> {response.alphabets.join(', ')}
+                <strong>Characters:</strong> {response.alphabets?.join(', ')}
               </div>
             )}
             {selectedOptions.some(option => option.value === 'numbers') && (
               <div>
-                <strong>Numbers:</strong> {response.numbers.join(', ')}
+                <strong>Numbers:</strong> {response.numbers?.join(', ')}
               </div>
             )}
             {selectedOptions.some(option => option.value === 'highestAlphabet') && (
               <div>
-                <strong>Highest Alphabet:</strong> {response.highest_alphabet.join(', ')}
+                <strong>Highest Alphabet:</strong> {response.highest_alphabet?.join(', ')}
               </div>
             )}
           </div>
