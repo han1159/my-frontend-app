@@ -48,6 +48,7 @@ const App = () => {
             placeholder='Enter JSON here'
             rows="4"
             cols="50"
+            style={{ width: '100%', color: 'black' }}
           />
         </div>
         <button type='submit' style={{
