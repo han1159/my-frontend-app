@@ -38,7 +38,7 @@ const App = () => {
 
   return (
     <div style={{ padding: '20px' }}>
-      <h1>Your Roll Number</h1>
+      <h1>API Input</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <textarea
@@ -47,7 +47,7 @@ const App = () => {
             placeholder='Enter JSON here'
             rows="4"
             cols="50"
-            style={{ width: '100%' }}
+            style={{ width: '100%', color: 'black' }}
           />
         </div>
         <button type='submit' style={{ marginTop: '10px' }}>Submit</button>
