@@ -48,7 +48,16 @@ const App = () => {
             placeholder='Enter JSON here'
             rows="4"
             cols="50"
-            style={{ width: '100%', color: 'black' }} // Ensure full width and text color black
+            style={{
+            marginTop: '10px',
+            backgroundColor: 'blue',
+            color: 'white',
+            textAlign: 'center',
+            padding: '10px',
+            border: 'none',
+            cursor: 'pointer',
+            width: '100%'
+          }} 
           />
         </div>
         <button type='submit' style={{ marginTop: '10px' }}>Submit</button>
@@ -62,22 +71,22 @@ const App = () => {
             onChange={handleSelectChange}
             value={selectedOptions}
             placeholder="Multi Filter"
-            style={{ marginTop: '10px' }}
+            style={{ marginTop: '10px'}}
           />
-          <div style={{ marginTop: '20px' }}>
+          <div style={{ marginTop: '20px'}}>
             <h2>Filtered Response</h2>
             {selectedOptions.some(option => option.value === 'characters') && (
-              <div>
+              <div style={{color: 'black'}}>
                 <strong>Characters:</strong> {response.alphabets?.join(', ')}
               </div>
             )}
             {selectedOptions.some(option => option.value === 'numbers') && (
-              <div>
+              <div style={{color: 'black'}}>
                 <strong>Numbers:</strong> {response.numbers?.join(', ')}
               </div>
             )}
             {selectedOptions.some(option => option.value === 'highestAlphabet') && (
-              <div>
+              <div style={{color: 'black'}}>
                 <strong>Highest Alphabet:</strong> {response.highest_alphabet?.join(', ')}
               </div>
             )}
