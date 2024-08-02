@@ -48,7 +48,9 @@ const App = () => {
             placeholder='Enter JSON here'
             rows="4"
             cols="50"
-            style={{
+          />
+        </div>
+        <button type='submit' style={{
             marginTop: '10px',
             backgroundColor: 'blue',
             color: 'white',
@@ -57,10 +59,7 @@ const App = () => {
             border: 'none',
             cursor: 'pointer',
             width: '100%'
-          }} 
-          />
-        </div>
-        <button type='submit' style={{ marginTop: '10px' }}>Submit</button>
+          }}>Submit</button>
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {response && (
