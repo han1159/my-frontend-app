@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Select from 'react-select';
 
@@ -10,10 +10,15 @@ const App = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const options = [
-    { value: 'characters', label: 'Characters' },
+    { value: 'alphabets', label: 'Alphabets' },
     { value: 'numbers', label: 'Numbers' },
-    { value: 'highestAlphabet', label: 'Highest Alphabet' }
+    { value: 'highestLowercaseAlphabet', label: 'Highest Lowercase Alphabet' }
   ];
+
+  useEffect(() => {
+    // Update the document title to the user's roll number
+    document.title = "RA2111003020422";
+  }, []);
 
   const handleInputChange = (e) => {
     setJsonInput(e.target.value);
@@ -22,12 +27,12 @@ const App = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const parsedJson = JSON.parse(jsonInput);
-      const res = await axios.post('https://my-backend-app-vd6w.onrender.com/bfhl', parsedJson);
+      const parsedJson = JSON.parse(jsonInput); // Ensure input is valid JSON
+      const res = await axios.post('https://my-backend-app-vd6w.onrender.com/bfhl', parsedJson); // Update with your backend URL
       setResponse(res.data);
       setError(null);
     } catch (err) {
-      console.error('Error details:', err); // Log the error for more details
+      console.error('Error details:', err);
       setError('Invalid JSON format or API error');
       setResponse(null);
     }
@@ -71,13 +76,13 @@ const App = () => {
             onChange={handleSelectChange}
             value={selectedOptions}
             placeholder="Multi Filter"
-            style={{ marginTop: '10px'}}
+            style={{ marginTop: '10px' }}
           />
-          <div style={{ marginTop: '20px'}}>
+          <div style={{ marginTop: '20px' }}>
             <h2>Filtered Response</h2>
-            {selectedOptions.some(option => option.value === 'characters') && (
+            {selectedOptions.some(option => option.value === 'alphabets') && (
               <div style={{color: 'black'}}>
-                <strong>Characters:</strong> {response.alphabets?.join(', ')}
+                <strong>Alphabets:</strong> {response.alphabets?.join(', ')}
               </div>
             )}
             {selectedOptions.some(option => option.value === 'numbers') && (
@@ -85,9 +90,9 @@ const App = () => {
                 <strong>Numbers:</strong> {response.numbers?.join(', ')}
               </div>
             )}
-            {selectedOptions.some(option => option.value === 'highestAlphabet') && (
+            {selectedOptions.some(option => option.value === 'highestLowercaseAlphabet') && (
               <div style={{color: 'black'}}>
-                <strong>Highest Alphabet:</strong> {response.highest_alphabet?.join(', ')}
+                <strong>Highest Lowercase Alphabet:</strong> {response.highest_lowercase_alphabet?.join(', ')}
               </div>
             )}
           </div>
